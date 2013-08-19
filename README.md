@@ -18,7 +18,7 @@ a.addToSampleCount(yourAudioStream.length);
 
 // Copy your audio into the object
 while (int i = 0; i < yourAudioStream.length; i++) {
-a.setSample(i, yourAudioStream[i]);
+  a.setSample(i, yourAudioStream[i]);
 }
 
 // Run the analysis
@@ -47,13 +47,16 @@ static KeyFinder::KeyFinder k;
 KeyFinder::Workspace w;
 
 while (yourPacket = newAudioPacket()) {
-while (int i = 0; i < newAudioPacket.length; i++) {
-  a.setSample(i, newAudioPacket[i]);
-}
-k.progressiveChromagram(a, w);
-// if you want to grab progressive key estimates...
-KeyFinder::KeyDetectionResult r = k.keyOfChromagram(w);
-doSomethingWithMostRecentKeyEstimate(r.globalKeyEstimate);
+  while (int i = 0; i < newAudioPacket.length; i++) {
+    a.setSample(i, newAudioPacket[i]);
+  }
+
+  k.progressiveChromagram(a, w);
+
+  // if you want to grab progressive key estimates...
+  KeyFinder::KeyDetectionResult r = k.keyOfChromagram(w);
+  doSomethingWithMostRecentKeyEstimate(r.globalKeyEstimate);
+
 }
 
 // if you want to squeeze every last bit of audio from the working buffer...
