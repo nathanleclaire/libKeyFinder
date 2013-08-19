@@ -4,7 +4,7 @@ It is the basis of the KeyFinder GUI app, which is available as a binary downloa
 
 For the most basic use case, do something like this:
   
-```cpp
+```c++
   // Static because it retains useful resources for repeat use
   static KeyFinder::KeyFinder k;
 
@@ -30,7 +30,7 @@ For the most basic use case, do something like this:
 
 Alternatively, you can transform a stream of audio into a chromatic representation, and make progressive estimates of the key:
 
-```cpp
+```c++
   KeyFinder::AudioData a;
   a.setFrameRate(yourAudioStream.framerate);
   a.setChannels(yourAudioStream.channels);
