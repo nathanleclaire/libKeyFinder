@@ -3,6 +3,8 @@ libKeyFinder can be used to estimate the musical key of digital recordings.
 It is the basis of the KeyFinder GUI app, which is available as a binary download for Mac OSX and Windows at www.ibrahimshaath.co.uk/keyfinder
 
 For the most basic use case, do something like this:
+  
+```cpp
 
   // Static because it retains useful resources for repeat use
   static KeyFinder::KeyFinder k;
@@ -25,9 +27,12 @@ For the most basic use case, do something like this:
 
   // And do something with the result!
   doSomethingWith(r.globalKeyEstimate);
+  
+```
 
 Alternatively, you can transform a stream of audio into a chromatic representation, and make progressive estimates of the key:
 
+```cpp
   KeyFinder::AudioData a;
   a.setFrameRate(yourAudioStream.framerate);
   a.setChannels(yourAudioStream.channels);
@@ -54,3 +59,4 @@ Alternatively, you can transform a stream of audio into a chromatic representati
   KeyFinder::KeyDetectionResult r = k.keyOfChromagram(w);
 
   doSomethingWithFinalKeyEstimate(r.globalKeyEstimate);
+```
